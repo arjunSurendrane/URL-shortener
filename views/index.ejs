@@ -38,7 +38,7 @@
       <div class="grid place-content-center mt-10">
         <div>
           <div class="grid place-content-center">
-            <p class="font-bold text-gray-500">New Link</p>
+            <p class="font-bold text-gray-500" id="newLinkHeading"></p>
           </div>
           <a href="" id="shrinkedLink" class="text-sm text-blue-500"></a>
         </div>
@@ -49,6 +49,7 @@
   <script>
     const form = document.getElementById("shrinkForm");
     const shrinkedLink = document.getElementById("shrinkedLink");
+    const newLinkHeading = document.getElementById("newLinkHeading");
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       console.log("here");
@@ -59,6 +60,7 @@
       const { shortURL } = res.data;
       shrinkedLink.innerHTML = shortURL;
       shrinkedLink.href = shortURL;
+      newLinkHeading.innerHTML = "New Link";
     });
   </script>
 </html>
