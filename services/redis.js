@@ -7,12 +7,16 @@ import { connectToRedis } from "../config/redis.js";
  * @returns {Object} - redis data
  */
 export async function getOrSetFunction(key, cb) {
-  const redisClient = await connectToRedis();
-  const res = await redisClient.get(key);
-  if (res != null) {
-    return JSON.parse(res);
+  try {
+    const redisClient = await connectToRedis();
+    const res = await redisClient.get(key);
+    if (res != null) {
+      return JSON.parse(res);
+    }
+    const fetchData = await cb();
+    redisClient.setEx(key, process.env.REDIS_EXPIRE, JSON.stringify(fetchData));
+    return fetchData;
+  } catch (error) {
+    return error;
   }
-  const fetchData = await cb();
-  redisClient.setEx(key, process.env.REDIS_EXPIRE, JSON.stringify(fetchData));
-  return fetchData;
 }
