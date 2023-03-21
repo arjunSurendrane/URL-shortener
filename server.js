@@ -28,7 +28,7 @@ connectedToLocalhost(app);
  * Route config
  */
 app.use("/api/v1/", apiRoute);
-app.use("/:id", redirectRoute);
+app.use("/", redirectRoute);
 
 /**
  * global error handling middleware

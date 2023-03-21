@@ -1,9 +1,7 @@
 import express from "express";
+import { urlShortner } from "../controller/shortner.js";
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  console.log("here");
-  res.send("Welcome");
-});
+router.post("/", urlShortner);
 
 export default router;

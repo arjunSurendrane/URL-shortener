@@ -4,8 +4,11 @@ import mongoose from "mongoose";
  * shortenedUrl Schema
  */
 const shortenedUrlSchema = new mongoose.Schema({
-  link: String,
-  shortenedLink: String,
+  link: { type: String, required: true, unique: true },
+  shortLink: {
+    type: String,
+    unique: true,
+  },
 });
 
 /**
