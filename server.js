@@ -5,7 +5,7 @@ import { connectedToDb } from "./config/db.js";
 import { connectedToLocalhost } from "./config/server.js";
 import { errorHandling } from "./middleware/errorHandling.js";
 import apiRoute from "./route/api.js";
-import redirectRoute from "./route/redirect.js";
+import userRoute from "./route/user.js";
 
 const app = express();
 dotenv.config();
@@ -25,10 +25,15 @@ connectedToDb();
 connectedToLocalhost(app);
 
 /**
+ * Set up view engine
+ */
+app.set("view engine", "ejs");
+
+/**
  * Route config
  */
 app.use("/api/v1/", apiRoute);
-app.use("/", redirectRoute);
+app.use("/", userRoute);
 
 /**
  * global error handling middleware

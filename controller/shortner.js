@@ -22,3 +22,10 @@ export const redirectUrl = catchAsync(async (req, res) => {
   const data = await findOriginalLink(id);
   res.redirect(data.link);
 });
+
+/**
+ * Home page render function
+ */
+export const renderHome = (req, res) => {
+  res.render("index");
+};
