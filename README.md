@@ -64,6 +64,6 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](https://imgtr.ee/i/qil0D](https://imgtr.ee/images/2023/03/21/qil0D.png))
+![App Screenshot](https://imgtr.ee/images/2023/03/21/qil0D.png)
 
 
