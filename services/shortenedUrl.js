@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import ShortenedUrl from "../model/shortenedUrl.js";
+import { getOrSetFunction } from "./redis.js";
 
 /**
  * Store link in to database
@@ -24,5 +25,7 @@ export const saveShortenedLink = async (link) => {
  * @returns -
  */
 export const findOriginalLink = async (id) => {
-  return await ShortenedUrl.findOne({ shortLink: id });
+  return await getOrSetFunction(`id`, () => {
+    return ShortenedUrl.findOne({ shortLink: id });
+  });
 };
