@@ -18,7 +18,7 @@ It a website that reduces the length of your URL
 #### Shrink Url
 
 ```http
-  GET /api/v1/shrink
+  POST /api/v1/shrink
 ```
 
 
