@@ -13,6 +13,9 @@ export const saveShortenedLink = async (link) => {
     if (res) return res;
     const id = new mongoose.Types.ObjectId();
     let shortLink = JSON.stringify(id).substring(1, 8);
+    const data = await ShortenedUrl.findOne({ link: shortLink });
+
+    if (data) shortLink = "dkhfk";
     return await ShortenedUrl.create({
       _id: id,
       link,
@@ -30,10 +33,21 @@ export const saveShortenedLink = async (link) => {
  */
 export const findOriginalLink = async (id) => {
   try {
-    return await getOrSetFunction(`${id}`, () => {
-      return ShortenedUrl.findOne({ shortLink: id });
-    });
+    // return await getOrSetFunction(`${id}`, () => {
+    //   return ShortenedUrl.findOne({ shortLink: id });
+    // });
+    return ShortenedUrl.findOne({ shortLink: id });
   } catch (error) {
     return error;
   }
 };
+
+function sample(data) {
+  return data;
+}
+
+function main(data) {
+  console.log("hello", data);
+}
+
+main(sample("arjun"));
